@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>合同会社bullet | SNSという事業装置</title>
+    <title>合同会社bullet | 感覚を排除し、再現性を実装する</title>
     <script src="https://cdn.tailwindcss.com"></script>
     <style>
         * {
@@ -85,29 +85,28 @@
         }
 
         .hero-content {
-            max-width: 1000px;
+            max-width: 1100px;
         }
 
         .hero h1 {
-            font-size: clamp(3rem, 8vw, 6rem);
+            font-size: clamp(2.5rem, 7vw, 5.5rem);
             font-weight: 900;
-            line-height: 1.1;
-            margin-bottom: 2rem;
-            letter-spacing: -0.03em;
+            line-height: 1.2;
+            margin-bottom: 2.5rem;
+            letter-spacing: -0.02em;
             color: #000000;
         }
 
         .hero h1 .orange {
             color: #FF4500;
-            letter-spacing: -0.02em;
         }
 
         .hero p {
-            font-size: clamp(1.1rem, 2.5vw, 1.5rem);
+            font-size: clamp(1rem, 2vw, 1.3rem);
             color: #333333;
-            line-height: 1.8;
+            line-height: 1.9;
             font-weight: 500;
-            letter-spacing: 0.08em;
+            letter-spacing: 0.03em;
         }
 
         /* ============================================
@@ -156,15 +155,16 @@
         .services-header p {
             font-size: 1.1rem;
             color: #666666;
-            letter-spacing: 0.05em;
+            letter-spacing: 0.03em;
             font-weight: 500;
+            line-height: 1.8;
         }
 
         .process-container {
             display: flex;
             flex-direction: column;
             gap: 4rem;
-            max-width: 900px;
+            max-width: 1000px;
             margin: 0 auto;
             position: relative;
             z-index: 2;
@@ -209,38 +209,56 @@
         }
 
         .process-number {
-            font-size: 0.75rem;
+            font-size: 0.7rem;
             font-weight: 800;
-            color: #999999;
+            color: #FF4500;
             letter-spacing: 0.15em;
             margin-bottom: 1rem;
             text-transform: uppercase;
         }
 
         .process-title {
-            font-size: 1.75rem;
+            font-size: 1.6rem;
             font-weight: 900;
-            margin-bottom: 0.5rem;
+            margin-bottom: 0.75rem;
             color: #000000;
             line-height: 1.2;
-            letter-spacing: 0.05em;
+            letter-spacing: 0.03em;
             text-transform: uppercase;
         }
 
         .process-subtitle {
-            font-size: 1.25rem;
+            font-size: 1.1rem;
             font-weight: 700;
             color: #000000;
-            margin-bottom: 1.25rem;
+            margin-bottom: 1.5rem;
             letter-spacing: 0.02em;
         }
 
         .process-description {
             font-size: 0.95rem;
-            color: #666666;
-            line-height: 1.8;
-            letter-spacing: 0.02em;
+            color: #444444;
+            line-height: 1.9;
+            letter-spacing: 0.01em;
             font-weight: 400;
+            margin-bottom: 1.5rem;
+        }
+
+        .process-keywords {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 0.75rem;
+            margin-top: 1.5rem;
+        }
+
+        .keyword {
+            font-size: 0.75rem;
+            font-weight: 700;
+            color: #666666;
+            background-color: #f5f5f5;
+            padding: 0.4rem 0.9rem;
+            border-left: 2px solid #FF4500;
+            letter-spacing: 0.02em;
         }
 
         /* ============================================
@@ -268,9 +286,9 @@
 
         .audience-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+            grid-template-columns: repeat(auto-fit, minmax(400px, 1fr));
             gap: 3rem;
-            max-width: 900px;
+            max-width: 1000px;
             margin: 0 auto;
         }
 
@@ -289,13 +307,14 @@
             margin-bottom: 1.25rem;
             color: #000000;
             letter-spacing: 0.03em;
+            text-transform: uppercase;
         }
 
         .audience-card p {
             font-size: 0.95rem;
-            color: #666666;
-            line-height: 1.8;
-            letter-spacing: 0.02em;
+            color: #444444;
+            line-height: 1.9;
+            letter-spacing: 0.01em;
             font-weight: 400;
         }
 
@@ -319,7 +338,6 @@
             margin-bottom: 2rem;
             letter-spacing: 0.03em;
             color: #000000;
-            text-transform: uppercase;
         }
 
         .contact p {
@@ -327,7 +345,7 @@
             color: #666666;
             margin-bottom: 3rem;
             line-height: 1.8;
-            letter-spacing: 0.03em;
+            letter-spacing: 0.02em;
             font-weight: 400;
         }
 
@@ -442,54 +460,72 @@
     <section class="hero" id="hero">
         <div class="hero-content">
             <h1>
-                SNSという<br><span class="orange">事業装置</span>。
+                感覚を排除し、<br><span class="orange">再現性を実装する</span>。
             </h1>
-            <p>集客・教育・販売。すべてを構造化する。</p>
+            <p>
+                SNSマーケティングは『ギャンブル』ではない。<br>
+                論理とアルゴリズムで制御可能な『数式』である。
+            </p>
         </div>
     </section>
 
     <!-- SERVICES SECTION -->
     <section class="services" id="services">
         <div class="services-header">
-            <h2>事業装置の3つのフェーズ</h2>
-            <p>SNS運用を通じた、統合的なビジネス構築</p>
+            <h2>3つのコア・ストレングス</h2>
+            <p>エンジニアリング思考で、SNS運用を「装置」へと昇華させる</p>
         </div>
 
         <div class="process-container">
-            <!-- Phase 1 -->
+            <!-- Strength 1 -->
             <div class="process-item">
                 <div class="process-card">
-                    <div class="process-number">Phase 1</div>
-                    <div class="process-title">STRATEGY</div>
-                    <div class="process-subtitle">設計</div>
+                    <div class="process-number">01</div>
+                    <div class="process-title">Reverse Engineering</div>
+                    <div class="process-subtitle">逆算思考</div>
                     <div class="process-description">
-                        KGI設計・導線構築。ビジネスゴールを明確にし、SNS戦略の骨組みを構築します。
+                        「なんとなく」の運用は一切しない。ゴール（LTV/ROI）から逆算されたロジックのみを採用。勝つ確率が数学的に担保された領域でのみ戦う。
+                    </div>
+                    <div class="process-keywords">
+                        <span class="keyword">ROI設計</span>
+                        <span class="keyword">競合解析</span>
+                        <span class="keyword">勝ち筋の定義</span>
                     </div>
                 </div>
                 <div class="process-dot"></div>
             </div>
 
-            <!-- Phase 2 -->
+            <!-- Strength 2 -->
             <div class="process-item">
                 <div class="process-dot"></div>
                 <div class="process-card">
-                    <div class="process-number">Phase 2</div>
-                    <div class="process-title">CONSTRUCTION</div>
-                    <div class="process-subtitle">実装</div>
+                    <div class="process-number">02</div>
+                    <div class="process-title">Industrial Production</div>
+                    <div class="process-subtitle">工業的制作</div>
                     <div class="process-description">
-                        マルチプラットフォーム運用。Instagram、TikTok、X、LINEなど複数媒体を統合運用します。
+                        クリエイティブに「職人芸」は不要。AI・スクリプト・自動化ツールを駆使し、高品質なコンテンツを工業製品のように安定供給する体制を構築。
+                    </div>
+                    <div class="process-keywords">
+                        <span class="keyword">AI活用</span>
+                        <span class="keyword">オペレーション自動化</span>
+                        <span class="keyword">属人性排除</span>
                     </div>
                 </div>
             </div>
 
-            <!-- Phase 3 -->
+            <!-- Strength 3 -->
             <div class="process-item">
                 <div class="process-card">
-                    <div class="process-number">Phase 3</div>
-                    <div class="process-title">IGNITION</div>
-                    <div class="process-subtitle">点火</div>
+                    <div class="process-number">03</div>
+                    <div class="process-title">Asset Systemization</div>
+                    <div class="process-subtitle">資産化</div>
                     <div class="process-description">
-                        広告運用・販促キャンペーン。データドリブンな施策で、集客から販売までを加速します。
+                        フロー情報で終わらせない。一度放ったコンテンツが半永久的に顧客を連れてくる「資産（装置）」へと昇華させる。事業のB/Sを強化するマーケティング。
+                    </div>
+                    <div class="process-keywords">
+                        <span class="keyword">ストック型運用</span>
+                        <span class="keyword">顧客リスト化</span>
+                        <span class="keyword">ファン化</span>
                     </div>
                 </div>
                 <div class="process-dot"></div>
@@ -503,15 +539,15 @@
             <h2>対象企業</h2>
             <div class="audience-grid">
                 <div class="audience-card">
-                    <h3>大手・中堅企業</h3>
+                    <h3>Startups</h3>
                     <p>
-                        ブランド認知の拡大と、新規事業開発。イノベーション創出を支援します。
+                        PMF（プロダクトマーケットフィット）を最短最速で検証したい企業。
                     </p>
                 </div>
                 <div class="audience-card">
-                    <h3>店舗・中小企業</h3>
+                    <h3>Enterprises</h3>
                     <p>
-                        地域密着型の集客と、継続的な売上拡大。顧客ロイヤルティの構築を実現します。
+                        社内のDX・SNS運用が属人化し、ブラックボックス化している企業。
                     </p>
                 </div>
             </div>
@@ -523,8 +559,8 @@
         <div class="contact-container">
             <h2>装置を起動する</h2>
             <p>
-                SNSを単なるツールではなく、ビジネス成長の構造化された装置へ。<br>
-                まずはお気軽にお問い合わせください。
+                感覚ではなく、数式で。<br>
+                再現性のあるSNSマーケティングを、今すぐ実装する。
             </p>
             <a href="mailto:contact@bullet.jp" class="cta-button">お問い合わせ</a>
         </div>
