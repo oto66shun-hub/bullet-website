@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>合同会社bullet | 感覚を排除し、再現性を実装する</title>
+    <title>合同会社bullet | SNSという事業装置</title>
     <script src="https://cdn.tailwindcss.com"></script>
     <style>
         * {
@@ -23,21 +23,6 @@
             color: #000000;
             font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
             overflow-x: hidden;
-        }
-
-        /* ============================================
-           GLASSMORPHISM UTILITIES
-           ============================================ */
-        .glass {
-            backdrop-filter: blur(16px) saturate(180%);
-            background: rgba(255, 255, 255, 0.85);
-            border: 1px solid rgba(255, 255, 255, 0.95);
-        }
-
-        .glass-card {
-            backdrop-filter: blur(12px) saturate(180%);
-            background: rgba(255, 255, 255, 0.75);
-            border: 1px solid rgba(220, 220, 220, 0.6);
         }
 
         /* ============================================
@@ -121,10 +106,10 @@
         }
 
         .hero h1 {
-            font-size: clamp(2.5rem, 7vw, 5.5rem);
+            font-size: clamp(3rem, 8vw, 6rem);
             font-weight: 900;
             line-height: 1.15;
-            margin-bottom: 2.5rem;
+            margin-bottom: 2rem;
             letter-spacing: -0.025em;
             color: #000000;
             text-shadow: 0 4px 16px rgba(0, 0, 0, 0.08);
@@ -135,71 +120,73 @@
             text-shadow: 0 0 24px rgba(255, 69, 0, 0.2);
         }
 
-        .hero h1 .bullet-point {
-            color: #FF4500;
-            font-weight: 900;
+        .hero .subtitle {
+            font-size: clamp(1.2rem, 2.5vw, 1.8rem);
+            color: #333333;
+            line-height: 1.8;
+            font-weight: 600;
+            letter-spacing: 0.05em;
+            margin-top: 1.5rem;
         }
 
-        .hero p {
-            font-size: clamp(1rem, 2vw, 1.3rem);
-            color: #333333;
-            line-height: 1.9;
-            font-weight: 500;
-            letter-spacing: 0.03em;
+        .hero .subtitle::before {
+            content: '―';
+            color: #FF4500;
+            margin-right: 0.5rem;
         }
 
         /* ============================================
-           SERVICES SECTION WITH GLOWING LINE
+           PIPELINE SECTION
            ============================================ */
-        .services {
+        .pipeline {
             padding: 8rem 2rem;
             max-width: 1200px;
             margin: 0 auto;
             position: relative;
         }
 
-        /* Glowing Vertical Orange Line with Pulse */
-        .services::before {
+        /* Thick Glowing Pipeline */
+        .pipeline::before {
             content: '';
             position: absolute;
             left: 50%;
-            top: 15%;
-            bottom: 15%;
-            width: 2px;
+            top: 12%;
+            bottom: 12%;
+            width: 4px;
             background: linear-gradient(to bottom, 
                 transparent 0%, 
-                rgba(255, 69, 0, 0.6) 10%, 
+                rgba(255, 69, 0, 0.6) 8%, 
                 rgba(255, 69, 0, 0.9) 50%, 
-                rgba(255, 69, 0, 0.6) 90%, 
+                rgba(255, 69, 0, 0.6) 92%, 
                 transparent 100%);
             transform: translateX(-50%);
             z-index: 1;
-            box-shadow: 0 0 12px rgba(255, 69, 0, 0.4),
-                        0 0 24px rgba(255, 69, 0, 0.2);
-            animation: line-pulse 3s ease-in-out infinite;
+            box-shadow: 0 0 16px rgba(255, 69, 0, 0.5),
+                        0 0 32px rgba(255, 69, 0, 0.25);
+            animation: pipeline-pulse 3s ease-in-out infinite;
         }
 
-        @keyframes line-pulse {
+        @keyframes pipeline-pulse {
             0%, 100% {
-                opacity: 0.6;
-                box-shadow: 0 0 12px rgba(255, 69, 0, 0.4),
-                            0 0 24px rgba(255, 69, 0, 0.2);
+                opacity: 0.7;
+                box-shadow: 0 0 16px rgba(255, 69, 0, 0.5),
+                            0 0 32px rgba(255, 69, 0, 0.25);
             }
             50% {
                 opacity: 1;
-                box-shadow: 0 0 16px rgba(255, 69, 0, 0.6),
-                            0 0 32px rgba(255, 69, 0, 0.3);
+                box-shadow: 0 0 20px rgba(255, 69, 0, 0.7),
+                            0 0 40px rgba(255, 69, 0, 0.35);
             }
         }
 
-        .services-header {
+        .pipeline-header {
             text-align: center;
             margin-bottom: 6rem;
             position: relative;
             z-index: 2;
         }
 
-        .services-header h2 {
+        .pipeline-header h2 {
             font-size: clamp(2.5rem, 5vw, 4rem);
             font-weight: 900;
             margin-bottom: 1.5rem;
@@ -210,7 +197,7 @@
             text-shadow: 0 4px 16px rgba(0, 0, 0, 0.08);
         }
 
-        .services-header p {
+        .pipeline-header p {
             font-size: 1.1rem;
             color: #666666;
             letter-spacing: 0.03em;
@@ -218,7 +205,7 @@
             line-height: 1.8;
         }
 
-        .process-container {
+        .pipeline-container {
             display: flex;
             flex-direction: column;
             gap: 4rem;
@@ -228,26 +215,26 @@
             z-index: 2;
         }
 
-        .process-item {
+        .pipeline-item {
             display: grid;
-            grid-template-columns: 1fr 80px 1fr;
+            grid-template-columns: 1fr 100px 1fr;
             gap: 2rem;
             align-items: center;
         }
 
-        .process-item:nth-child(1) .process-card {
+        .pipeline-item:nth-child(1) .pipeline-card {
             grid-column: 1;
         }
 
-        .process-item:nth-child(2) .process-card {
+        .pipeline-item:nth-child(2) .pipeline-card {
             grid-column: 3;
         }
 
-        .process-item:nth-child(3) .process-card {
+        .pipeline-item:nth-child(3) .pipeline-card {
             grid-column: 1;
         }
 
-        .process-card {
+        .pipeline-card {
             padding: 3rem 2.5rem;
             backdrop-filter: blur(12px) saturate(180%);
             background: rgba(255, 255, 255, 0.75);
@@ -260,8 +247,7 @@
             overflow: hidden;
         }
 
-        /* Scanline effect */
-        .process-card::before {
+        .pipeline-card::before {
             content: '';
             position: absolute;
             top: -100%;
@@ -276,7 +262,7 @@
             transition: all 0.6s cubic-bezier(0.4, 0, 0.2, 1);
         }
 
-        .process-card:hover {
+        .pipeline-card:hover {
             border-color: rgba(255, 69, 0, 0.4);
             box-shadow: 0 12px 48px -12px rgba(0, 0, 0, 0.18),
                         0 0 0 1px rgba(255, 69, 0, 0.2) inset,
@@ -284,36 +270,36 @@
             transform: translateY(-4px);
         }
 
-        .process-card:hover::before {
+        .pipeline-card:hover::before {
             top: 100%;
             opacity: 1;
         }
 
-        .process-dot {
-            width: 20px;
-            height: 20px;
+        .pipeline-node {
+            width: 28px;
+            height: 28px;
             background-color: #FF4500;
-            border: 4px solid rgba(255, 255, 255, 0.9);
+            border: 5px solid rgba(255, 255, 255, 0.9);
             border-radius: 50%;
-            box-shadow: 0 0 0 3px rgba(255, 69, 0, 0.3),
-                        0 0 16px rgba(255, 69, 0, 0.4);
+            box-shadow: 0 0 0 4px rgba(255, 69, 0, 0.3),
+                        0 0 20px rgba(255, 69, 0, 0.5);
             grid-column: 2;
             justify-self: center;
-            animation: dot-pulse 3s ease-in-out infinite;
+            animation: node-pulse 3s ease-in-out infinite;
         }
 
-        @keyframes dot-pulse {
+        @keyframes node-pulse {
             0%, 100% {
-                box-shadow: 0 0 0 3px rgba(255, 69, 0, 0.3),
-                            0 0 16px rgba(255, 69, 0, 0.4);
+                box-shadow: 0 0 0 4px rgba(255, 69, 0, 0.3),
+                            0 0 20px rgba(255, 69, 0, 0.5);
             }
             50% {
-                box-shadow: 0 0 0 5px rgba(255, 69, 0, 0.4),
-                            0 0 24px rgba(255, 69, 0, 0.6);
+                box-shadow: 0 0 0 6px rgba(255, 69, 0, 0.4),
+                            0 0 28px rgba(255, 69, 0, 0.7);
             }
         }
 
-        .process-number {
+        .pipeline-number {
             font-size: 0.7rem;
             font-weight: 800;
             color: #FF4500;
@@ -322,17 +308,17 @@
             text-transform: uppercase;
         }
 
-        .process-title {
-            font-size: 1.6rem;
+        .pipeline-title {
+            font-size: 1.8rem;
             font-weight: 900;
-            margin-bottom: 0.75rem;
+            margin-bottom: 0.5rem;
             color: #000000;
             line-height: 1.15;
             letter-spacing: 0.03em;
             text-transform: uppercase;
         }
 
-        .process-subtitle {
+        .pipeline-subtitle {
             font-size: 1.1rem;
             font-weight: 700;
             color: #000000;
@@ -340,7 +326,7 @@
             letter-spacing: 0.02em;
         }
 
-        .process-description {
+        .pipeline-description {
             font-size: 0.95rem;
             color: #444444;
             line-height: 1.9;
@@ -349,14 +335,14 @@
             margin-bottom: 1.5rem;
         }
 
-        .process-keywords {
+        .pipeline-items {
             display: flex;
             flex-wrap: wrap;
             gap: 0.75rem;
             margin-top: 1.5rem;
         }
 
-        .keyword {
+        .pipeline-tag {
             font-size: 0.75rem;
             font-weight: 700;
             color: #666666;
@@ -369,14 +355,14 @@
         }
 
         /* ============================================
-           TARGET AUDIENCE SECTION
+           TARGET SECTION
            ============================================ */
-        .audience {
+        .target {
             padding: 8rem 2rem;
             position: relative;
         }
 
-        .audience::before {
+        .target::before {
             content: '';
             position: absolute;
             top: 0;
@@ -387,14 +373,14 @@
             pointer-events: none;
         }
 
-        .audience-container {
+        .target-container {
             max-width: 1200px;
             margin: 0 auto;
             position: relative;
             z-index: 1;
         }
 
-        .audience h2 {
+        .target h2 {
             font-size: clamp(2.5rem, 5vw, 4rem);
             font-weight: 900;
             text-align: center;
@@ -406,7 +392,7 @@
             text-shadow: 0 4px 16px rgba(0, 0, 0, 0.08);
         }
 
-        .audience-grid {
+        .target-grid {
             display: grid;
             grid-template-columns: repeat(auto-fit, minmax(400px, 1fr));
             gap: 3rem;
@@ -414,7 +400,7 @@
             margin: 0 auto;
         }
 
-        .audience-card {
+        .target-card {
             backdrop-filter: blur(12px) saturate(180%);
             background: rgba(255, 255, 255, 0.75);
             padding: 3rem 2.5rem;
@@ -428,7 +414,7 @@
             overflow: hidden;
         }
 
-        .audience-card::before {
+        .target-card::before {
             content: '';
             position: absolute;
             top: -100%;
@@ -443,7 +429,7 @@
             transition: all 0.6s cubic-bezier(0.4, 0, 0.2, 1);
         }
 
-        .audience-card:hover {
+        .target-card:hover {
             border-left-color: #FF4500;
             box-shadow: 0 12px 48px -12px rgba(0, 0, 0, 0.18),
                         0 0 0 1px rgba(255, 69, 0, 0.2) inset,
@@ -451,22 +437,21 @@
             transform: translateY(-4px);
         }
 
-        .audience-card:hover::before {
+        .target-card:hover::before {
             top: 100%;
             opacity: 1;
         }
 
-        .audience-card h3 {
+        .target-card h3 {
             font-size: 1.5rem;
             font-weight: 900;
             margin-bottom: 1.25rem;
             color: #000000;
             letter-spacing: 0.03em;
-            text-transform: uppercase;
             line-height: 1.2;
         }
 
-        .audience-card p {
+        .target-card p {
             font-size: 0.95rem;
             color: #444444;
             line-height: 1.9;
@@ -612,27 +597,27 @@
            RESPONSIVE
            ============================================ */
         @media (max-width: 768px) {
-            .process-item {
+            .pipeline-item {
                 grid-template-columns: 1fr;
                 gap: 1rem;
             }
 
-            .process-item .process-card {
+            .pipeline-item .pipeline-card {
                 grid-column: 1 !important;
             }
 
-            .process-dot {
+            .pipeline-node {
                 grid-column: 1;
                 justify-self: start;
                 margin-left: 1rem;
             }
 
-            .services::before {
-                left: 1rem;
+            .pipeline::before {
+                left: 1.5rem;
                 transform: none;
             }
 
-            .audience-grid {
+            .target-grid {
                 grid-template-columns: 1fr;
             }
         }
@@ -653,94 +638,94 @@
     <section class="hero" id="hero">
         <div class="hero-content">
             <h1>
-                感覚を排除し、<br><span class="orange">再現性を実装する</span><span class="bullet-point">.</span>
+                SNSという<span class="orange">事業装置</span>。
             </h1>
-            <p>
-                SNSマーケティングは『ギャンブル』ではない。<br>
-                論理とアルゴリズムで制御可能な『数式』である。
-            </p>
+            <p class="subtitle">集客・教育・販売まで、構造化。</p>
         </div>
     </section>
 
-    <!-- SERVICES SECTION -->
-    <section class="services" id="services">
-        <div class="services-header">
-            <h2>3つのコア・ストレングス</h2>
-            <p>エンジニアリング思考で、SNS運用を「装置」へと昇華させる</p>
+    <!-- PIPELINE SECTION -->
+    <section class="pipeline" id="pipeline">
+        <div class="pipeline-header">
+            <h2>一気通貫のパイプライン</h2>
+            <p>設計から販売まで、すべてを統合したSNSマーケティング</p>
         </div>
 
-        <div class="process-container">
-            <!-- Strength 1 -->
-            <div class="process-item">
-                <div class="process-card">
-                    <div class="process-number">01</div>
-                    <div class="process-title">Reverse Engineering</div>
-                    <div class="process-subtitle">逆算思考</div>
-                    <div class="process-description">
-                        「なんとなく」の運用は一切しない。ゴール（LTV/ROI）から逆算されたロジックのみを採用。勝つ確率が数学的に担保された領域でのみ戦う。
+        <div class="pipeline-container">
+            <!-- Step 1: Architecture -->
+            <div class="pipeline-item">
+                <div class="pipeline-card">
+                    <div class="pipeline-number">Step 1</div>
+                    <div class="pipeline-title">Architecture</div>
+                    <div class="pipeline-subtitle">設計</div>
+                    <div class="pipeline-description">
+                        KGI/KPI設計、ターゲット選定、導線設計。<br>
+                        「どうやって売るか」の青写真を描きます。
                     </div>
-                    <div class="process-keywords">
-                        <span class="keyword">ROI設計</span>
-                        <span class="keyword">競合解析</span>
-                        <span class="keyword">勝ち筋の定義</span>
+                    <div class="pipeline-items">
+                        <span class="pipeline-tag">KGI/KPI設計</span>
+                        <span class="pipeline-tag">ターゲット選定</span>
+                        <span class="pipeline-tag">導線設計</span>
                     </div>
                 </div>
-                <div class="process-dot"></div>
+                <div class="pipeline-node"></div>
             </div>
 
-            <!-- Strength 2 -->
-            <div class="process-item">
-                <div class="process-dot"></div>
-                <div class="process-card">
-                    <div class="process-number">02</div>
-                    <div class="process-title">Industrial Production</div>
-                    <div class="process-subtitle">工業的制作</div>
-                    <div class="process-description">
-                        クリエイティブに「職人芸」は不要。AI・スクリプト・自動化ツールを駆使し、高品質なコンテンツを工業製品のように安定供給する体制を構築。
+            <!-- Step 2: Creative & Operation -->
+            <div class="pipeline-item">
+                <div class="pipeline-node"></div>
+                <div class="pipeline-card">
+                    <div class="pipeline-number">Step 2</div>
+                    <div class="pipeline-title">Creative & Operation</div>
+                    <div class="pipeline-subtitle">実装・運用</div>
+                    <div class="pipeline-description">
+                        コンテンツ制作、アカウント運用代行（TikTok/Insta/X）、ファン化。<br>
+                        マルチプラットフォームで一貫した体験を提供します。
                     </div>
-                    <div class="process-keywords">
-                        <span class="keyword">AI活用</span>
-                        <span class="keyword">オペレーション自動化</span>
-                        <span class="keyword">属人性排除</span>
+                    <div class="pipeline-items">
+                        <span class="pipeline-tag">コンテンツ制作</span>
+                        <span class="pipeline-tag">運用代行</span>
+                        <span class="pipeline-tag">ファン化</span>
                     </div>
                 </div>
             </div>
 
-            <!-- Strength 3 -->
-            <div class="process-item">
-                <div class="process-card">
-                    <div class="process-number">03</div>
-                    <div class="process-title">Asset Systemization</div>
-                    <div class="process-subtitle">資産化</div>
-                    <div class="process-description">
-                        フロー情報で終わらせない。一度放ったコンテンツが半永久的に顧客を連れてくる「資産（装置）」へと昇華させる。事業のB/Sを強化するマーケティング。
+            <!-- Step 3: Boost & Sales -->
+            <div class="pipeline-item">
+                <div class="pipeline-card">
+                    <div class="pipeline-number">Step 3</div>
+                    <div class="pipeline-title">Boost & Sales</div>
+                    <div class="pipeline-subtitle">加速・販売</div>
+                    <div class="pipeline-description">
+                        広告運用、キャンペーン企画、LPO（クロージング）。<br>
+                        設計から販売まで一気通貫で成果を最大化します。
                     </div>
-                    <div class="process-keywords">
-                        <span class="keyword">ストック型運用</span>
-                        <span class="keyword">顧客リスト化</span>
-                        <span class="keyword">ファン化</span>
+                    <div class="pipeline-items">
+                        <span class="pipeline-tag">広告運用</span>
+                        <span class="pipeline-tag">キャンペーン企画</span>
+                        <span class="pipeline-tag">LPO</span>
                     </div>
                 </div>
-                <div class="process-dot"></div>
+                <div class="pipeline-node"></div>
             </div>
         </div>
     </section>
 
-    <!-- TARGET AUDIENCE SECTION -->
-    <section class="audience" id="audience">
-        <div class="audience-container">
+    <!-- TARGET SECTION -->
+    <section class="target" id="target">
+        <div class="target-container">
             <h2>対象企業</h2>
-            <div class="audience-grid">
-                <div class="audience-card">
-                    <h3>Startups</h3>
+            <div class="target-grid">
+                <div class="target-card">
+                    <h3>大手・中堅企業の担当者</h3>
                     <p>
-                        PMF（プロダクトマーケットフィット）を最短最速で検証したい企業。
+                        新しいことをしたい、イノベーションを起こしたい企業。SNSを通じた新規事業開発を支援します。
                     </p>
                 </div>
-                <div class="audience-card">
-                    <h3>Enterprises</h3>
+                <div class="target-card">
+                    <h3>店舗・中小企業</h3>
                     <p>
-                        社内のDX・SNS運用が属人化し、ブラックボックス化している企業。
+                        集客に困っている、売上を伸ばしたい企業。SNSを通じた顧客獲得と売上拡大を実現します。
                     </p>
                 </div>
             </div>
@@ -752,8 +737,8 @@
         <div class="contact-container">
             <h2>装置を起動する</h2>
             <p>
-                感覚ではなく、数式で。<br>
-                再現性のあるSNSマーケティングを、今すぐ実装する。
+                部分的な代行ではなく、事業を作る。<br>
+                SNSという事業装置を、今すぐ起動しましょう。
             </p>
             <a href="mailto:contact@bullet.jp" class="cta-button">お問い合わせ</a>
         </div>
