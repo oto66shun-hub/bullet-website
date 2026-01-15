@@ -1,0 +1,466 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>合同会社bullet | SNSという事業装置</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        body {
+            background-color: #ffffff;
+            color: #000000;
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
+            overflow-x: hidden;
+        }
+
+        /* ============================================
+           HEADER
+           ============================================ */
+        header {
+            position: sticky;
+            top: 0;
+            z-index: 50;
+            background-color: rgba(255, 255, 255, 0.98);
+            backdrop-filter: blur(10px);
+            border-bottom: 1px solid #e5e5e5;
+            padding: 1.5rem 2rem;
+        }
+
+        .header-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo {
+            font-size: 1.25rem;
+            font-weight: 700;
+            letter-spacing: 0.1em;
+            color: #000000;
+        }
+
+        nav a {
+            color: #000000;
+            text-decoration: none;
+            font-weight: 600;
+            font-size: 0.875rem;
+            letter-spacing: 0.05em;
+            transition: opacity 0.2s ease;
+        }
+
+        nav a:hover {
+            opacity: 0.6;
+        }
+
+        /* ============================================
+           HERO SECTION
+           ============================================ */
+        .hero {
+            min-height: 90vh;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+            padding: 4rem 2rem;
+        }
+
+        .hero-content {
+            max-width: 900px;
+        }
+
+        .hero h1 {
+            font-size: clamp(3rem, 8vw, 5rem);
+            font-weight: 700;
+            line-height: 1.2;
+            margin-bottom: 2rem;
+            letter-spacing: -0.02em;
+            color: #000000;
+        }
+
+        .hero h1 .orange {
+            color: #FF4500;
+        }
+
+        .hero p {
+            font-size: clamp(1rem, 2vw, 1.25rem);
+            color: #666666;
+            line-height: 1.6;
+            font-weight: 400;
+            letter-spacing: 0.05em;
+        }
+
+        /* ============================================
+           SERVICES SECTION
+           ============================================ */
+        .services {
+            padding: 6rem 2rem;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .services-header {
+            text-align: center;
+            margin-bottom: 5rem;
+        }
+
+        .services-header h2 {
+            font-size: clamp(2rem, 5vw, 3rem);
+            font-weight: 700;
+            margin-bottom: 1rem;
+            letter-spacing: -0.02em;
+            color: #000000;
+        }
+
+        .services-header p {
+            font-size: 1rem;
+            color: #666666;
+            letter-spacing: 0.02em;
+        }
+
+        .process-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 3rem;
+            max-width: 1000px;
+            margin: 0 auto;
+        }
+
+        .process-item {
+            padding: 2.5rem 2rem;
+            background-color: #fafafa;
+            border-top: 2px solid #000000;
+            transition: all 0.3s ease;
+        }
+
+        .process-item:hover {
+            background-color: #f5f5f5;
+            transform: translateY(-4px);
+        }
+
+        .process-number {
+            font-size: 0.75rem;
+            font-weight: 700;
+            color: #999999;
+            letter-spacing: 0.1em;
+            margin-bottom: 1rem;
+            text-transform: uppercase;
+        }
+
+        .process-title {
+            font-size: 1.5rem;
+            font-weight: 700;
+            margin-bottom: 0.5rem;
+            color: #000000;
+            line-height: 1.3;
+        }
+
+        .process-subtitle {
+            font-size: 1rem;
+            font-weight: 600;
+            color: #000000;
+            margin-bottom: 1rem;
+        }
+
+        .process-description {
+            font-size: 0.9rem;
+            color: #666666;
+            line-height: 1.6;
+            letter-spacing: 0.01em;
+        }
+
+        /* ============================================
+           TARGET AUDIENCE SECTION
+           ============================================ */
+        .audience {
+            padding: 6rem 2rem;
+            background-color: #fafafa;
+        }
+
+        .audience-container {
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .audience h2 {
+            font-size: clamp(2rem, 5vw, 3rem);
+            font-weight: 700;
+            text-align: center;
+            margin-bottom: 4rem;
+            letter-spacing: -0.02em;
+            color: #000000;
+        }
+
+        .audience-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+            max-width: 800px;
+            margin: 0 auto;
+        }
+
+        .audience-card {
+            background-color: #ffffff;
+            padding: 2.5rem 2rem;
+            border-left: 2px solid #000000;
+            transition: all 0.3s ease;
+        }
+
+        .audience-card:hover {
+            transform: translateX(4px);
+            border-left-color: #FF4500;
+        }
+
+        .audience-card h3 {
+            font-size: 1.25rem;
+            font-weight: 700;
+            margin-bottom: 1rem;
+            color: #000000;
+        }
+
+        .audience-card p {
+            font-size: 0.9rem;
+            color: #666666;
+            line-height: 1.6;
+            letter-spacing: 0.01em;
+        }
+
+        /* ============================================
+           CONTACT SECTION
+           ============================================ */
+        .contact {
+            padding: 6rem 2rem;
+            background-color: #ffffff;
+            text-align: center;
+        }
+
+        .contact-container {
+            max-width: 700px;
+            margin: 0 auto;
+        }
+
+        .contact h2 {
+            font-size: clamp(2rem, 4vw, 2.5rem);
+            font-weight: 700;
+            margin-bottom: 1.5rem;
+            letter-spacing: -0.02em;
+            color: #000000;
+        }
+
+        .contact p {
+            font-size: 1rem;
+            color: #666666;
+            margin-bottom: 3rem;
+            line-height: 1.6;
+            letter-spacing: 0.02em;
+        }
+
+        .cta-button {
+            display: inline-block;
+            background-color: #000000;
+            color: #ffffff;
+            padding: 1rem 2.5rem;
+            font-size: 0.9rem;
+            font-weight: 600;
+            letter-spacing: 0.05em;
+            text-decoration: none;
+            border: none;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+
+        .cta-button:hover {
+            background-color: #FF4500;
+        }
+
+        /* ============================================
+           FOOTER
+           ============================================ */
+        footer {
+            background-color: #000000;
+            color: #ffffff;
+            padding: 3rem 2rem;
+            text-align: center;
+        }
+
+        .footer-content {
+            margin-bottom: 1.5rem;
+        }
+
+        .footer-company {
+            font-size: 0.9rem;
+            font-weight: 700;
+            letter-spacing: 0.05em;
+            margin-bottom: 0.5rem;
+        }
+
+        .footer-address {
+            font-size: 0.85rem;
+            color: #999999;
+            letter-spacing: 0.02em;
+        }
+
+        .footer-divider {
+            width: 40px;
+            height: 1px;
+            background-color: #333333;
+            margin: 1.5rem auto;
+        }
+
+        .footer-copyright {
+            font-size: 0.75rem;
+            color: #666666;
+            letter-spacing: 0.02em;
+        }
+
+        /* ============================================
+           RESPONSIVE
+           ============================================ */
+        @media (max-width: 768px) {
+            .process-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .audience-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- HEADER -->
+    <header>
+        <div class="header-container">
+            <div class="logo">bullet</div>
+            <nav>
+                <a href="#contact">CONTACT</a>
+            </nav>
+        </div>
+    </header>
+
+    <!-- HERO SECTION -->
+    <section class="hero" id="hero">
+        <div class="hero-content">
+            <h1>
+                SNSという<br><span class="orange">事業装置</span>。
+            </h1>
+            <p>集客・教育・販売。すべてを構造化する。</p>
+        </div>
+    </section>
+
+    <!-- SERVICES SECTION -->
+    <section class="services" id="services">
+        <div class="services-header">
+            <h2>事業装置の3つのフェーズ</h2>
+            <p>SNS運用を通じた、統合的なビジネス構築</p>
+        </div>
+
+        <div class="process-grid">
+            <!-- Phase 1 -->
+            <div class="process-item">
+                <div class="process-number">Phase 1</div>
+                <div class="process-title">STRATEGY</div>
+                <div class="process-subtitle">設計</div>
+                <div class="process-description">
+                    KGI設計・導線構築。ビジネスゴールを明確にし、SNS戦略の骨組みを構築します。
+                </div>
+            </div>
+
+            <!-- Phase 2 -->
+            <div class="process-item">
+                <div class="process-number">Phase 2</div>
+                <div class="process-title">CONSTRUCTION</div>
+                <div class="process-subtitle">実装</div>
+                <div class="process-description">
+                    マルチプラットフォーム運用。Instagram、TikTok、X、LINEなど複数媒体を統合運用します。
+                </div>
+            </div>
+
+            <!-- Phase 3 -->
+            <div class="process-item">
+                <div class="process-number">Phase 3</div>
+                <div class="process-title">IGNITION</div>
+                <div class="process-subtitle">点火</div>
+                <div class="process-description">
+                    広告運用・販促キャンペーン。データドリブンな施策で、集客から販売までを加速します。
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- TARGET AUDIENCE SECTION -->
+    <section class="audience" id="audience">
+        <div class="audience-container">
+            <h2>対象企業</h2>
+            <div class="audience-grid">
+                <div class="audience-card">
+                    <h3>大手・中堅企業</h3>
+                    <p>
+                        ブランド認知の拡大と、新規事業開発。イノベーション創出を支援します。
+                    </p>
+                </div>
+                <div class="audience-card">
+                    <h3>店舗・中小企業</h3>
+                    <p>
+                        地域密着型の集客と、継続的な売上拡大。顧客ロイヤルティの構築を実現します。
+                    </p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- CONTACT SECTION -->
+    <section class="contact" id="contact">
+        <div class="contact-container">
+            <h2>装置を起動する</h2>
+            <p>
+                SNSを単なるツールではなく、ビジネス成長の構造化された装置へ。まずはお気軽にお問い合わせください。
+            </p>
+            <a href="mailto:contact@bullet.jp" class="cta-button">お問い合わせ</a>
+        </div>
+    </section>
+
+    <!-- FOOTER -->
+    <footer>
+        <div class="footer-content">
+            <div class="footer-company">合同会社 bullet</div>
+            <div class="footer-address">
+                東京都渋谷区道玄坂1-10番8号 渋谷道玄坂東急ビル 2F-C
+            </div>
+        </div>
+        <div class="footer-divider"></div>
+        <div class="footer-copyright">
+            &copy; 2024 合同会社 bullet. All rights reserved.
+        </div>
+    </footer>
+
+    <!-- SMOOTH SCROLL SCRIPT -->
+    <script>
+        // Smooth scroll for anchor links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    target.scrollIntoView({
+                        behavior: 'smooth',
+                        block: 'start'
+                    });
+                }
+            });
+        });
+    </script>
+</body>
+</html>
